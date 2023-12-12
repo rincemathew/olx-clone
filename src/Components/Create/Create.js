@@ -1,11 +1,11 @@
 import React, { Fragment,useContext,useState } from 'react';
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './Create.css';
 import Header from '../Header/Header';
 import { FirebaseContext,AuthContext } from '../../store/Context';
 
 const Create = () => {
-  const history=useHistory()
+  const navigate=useNavigate()
   const {user}=useContext(AuthContext)
   const {firebase}=useContext(FirebaseContext)
   const [name,setName]=useState('')
@@ -30,7 +30,7 @@ const Create = () => {
           createdAt:date.toDateString()
         });
         alert('product added')
-        history.push('/')
+        navigate('/')
       });
     });
   }

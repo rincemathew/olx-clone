@@ -1,11 +1,11 @@
 import React, { useState,useContext } from 'react';
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../store/Context';
 
 export default function Signup() {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [username,setUsername]=useState('');
   const [email,setEmail]=useState('');
   const [phone,setPhone]=useState('');
@@ -56,7 +56,7 @@ export default function Signup() {
           username:username,
           phone:phone,
         }).then(()=>{
-          history.push("/login")
+          navigate("/login")
         })
       })
     });
@@ -118,7 +118,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-        <a onClick={()=>history.push('/login')}>Login</a>
+        <a onClick={()=>navigate('/login')}>Login</a>
       </div>
     </div>
   );

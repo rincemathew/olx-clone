@@ -1,6 +1,6 @@
 import React,{useEffect,useContext} from 'react';
 import './App.css';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {BrowserRouter, Routes,Route} from 'react-router-dom';
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import Create from './Pages/Create'
@@ -23,24 +23,15 @@ function App() {
   return (
     <div>
       <Post>
-      <Router>
-        <Route exact path='/'>
-      <Home />
-        </Route>
-        <Route path='/signup'>
-      <Signup />
-        </Route>
-        <Route path='/login'>
-      <Login/>
-        </Route>
-        <Route path='/create'>
-      <Create/>
-        </Route>
-        <Route path='/viewpost'>
-      <View />
-        </Route>
-      </Router>
-      
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/viewpost" element={<View />} />
+          </Routes>
+        </BrowserRouter>
       </Post>
     </div>
   );

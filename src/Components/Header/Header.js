@@ -1,5 +1,5 @@
 import React,{useContext,useState} from 'react';
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
@@ -10,7 +10,7 @@ import { AuthContext, FirebaseContext } from '../../store/Context';
 function Header() {
   const {user}=useContext(AuthContext)
   const {firebase}=useContext(FirebaseContext)
-  const history=useHistory()
+  const navigate=useNavigate()
   
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -20,7 +20,7 @@ function Header() {
 
   const handleLogout = () => {
     firebase.auth().signOut();
-    history.push('/')
+    navigate('/')
   };
 
   const handleProfile = () => {
@@ -29,7 +29,7 @@ function Header() {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div onClick={()=>history.push('/')} className="brandName">
+        <div onClick={()=>navigate('/')} className="brandName">
           <OlxLogo></OlxLogo>
         </div>
         <div className="placeSearch">
@@ -67,7 +67,7 @@ function Header() {
               )}
             </div>
           ) : (
-            <span onClick={()=>history.push('/login')}>Login</span>
+            <span onClick={()=>navigate('/login')}>Login</span>
           )}
           <hr />
         </div>
@@ -76,7 +76,7 @@ function Header() {
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span onClick={()=>history.push('/create')}>SELL</span>
+            <span onClick={()=>navigate('/create')}>SELL</span>
           </div>
         </div>
       </div>
