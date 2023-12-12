@@ -23,7 +23,6 @@ function App() {
   return (
     <div>
       <Post>
-
       <Router>
         <Route exact path='/'>
       <Home />
