@@ -1,8 +1,8 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 import Logo from '../../olx-logo.png';
 import './Signup.css';
-import { FirebaseContext } from '../../store/Context';
+import { AuthContext, FirebaseContext } from '../../store/Context';
 
 export default function Signup() {
   const navigate = useNavigate()
@@ -12,6 +12,10 @@ export default function Signup() {
   const [password,setPassword]=useState('')
 
   const{firebase}=useContext(FirebaseContext)
+  const {user}=useContext(AuthContext)
+  useEffect(()=>{
+    user && navigate('/')
+  },[]);
 
   const handleSignIn=(e)=>{
     e.preventDefault();

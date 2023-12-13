@@ -72,13 +72,13 @@ function Header() {
           <hr />
         </div>
 
-        <div className="sellMenu">
+        {user && <div className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
             <span onClick={()=>navigate('/create')}>SELL</span>
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

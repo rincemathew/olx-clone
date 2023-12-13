@@ -1,6 +1,6 @@
-import React,{useState,useContext} from 'react';
-import { FirebaseContext } from '../../store/Context'
-import {useNavigate} from 'react-router-dom'
+import React,{useState,useContext, useEffect} from 'react';
+import { AuthContext,FirebaseContext } from '../../store/Context'
+import {redirect, useNavigate} from 'react-router-dom'
 import Logo from '../../olx-logo.png';
 import './Login.css';
 
@@ -8,6 +8,11 @@ function Login() {
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
   const {firebase}=useContext(FirebaseContext)
+  const {user}=useContext(AuthContext)
+  useEffect(()=>{
+    console.log(user)
+    user && navigate('/')
+  },[]);
   const navigate = useNavigate()
     const handleLogIN=(e)=>{
       e.preventDefault()
